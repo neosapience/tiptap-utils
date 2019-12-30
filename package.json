@@ -4,8 +4,8 @@
   "description": "Utility functions for tiptap",
   "homepage": "https://tiptap.scrumpy.io",
   "license": "MIT",
-  "main": "dist/utils.common.js",
-  "module": "dist/utils.esm.js",
+  "main": "src/index.js",
+  "module": "src/index.js",
   "unpkg": "dist/utils.js",
   "jsdelivr": "dist/utils.js",
   "files": [
