@@ -1,6 +1,11 @@
-export default function actorIsActive(state, type, attrs = {}, from) {
-  let node = state.doc.nodeAt(from)
-  let ret =  node.hasMarkup(type, attrs)
+import nodeIsActive from './nodeIsActive'
 
-  return ret
+export default function actorIsActive(state, type, attrs = {}, from) {
+  if (from !== undefined) {
+    let node = state.doc.nodeAt(from)
+    let ret =  node.hasMarkup(type, attrs)
+    return ret
+  } else {
+    return nodeIsActive(state, type, attrs)
+  }
 }
