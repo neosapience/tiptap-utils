@@ -1,8 +1,14 @@
+
+function isFirstPositionFromSentence($from, $to) {
+  return $from.pos === $to.pos &&  $to.pos < $to.end()
+}
+
 export default function markIsActive(state, type, attrs) {
   const {
     from,
     $from,
     to,
+    $to,
     empty,
   } = state.selection
 
@@ -13,8 +19,7 @@ export default function markIsActive(state, type, attrs) {
         return attrs[key] === ret.attrs[key]
       }
     }
-
-    return !!ret
+    return !!ret || isFirstPositionFromSentence($from, $to) && !!state.doc.rangeHasQueryMark(from, to + 1, type, attrs)
   }
 
   return !!state.doc.rangeHasQueryMark(from, to, type, attrs)
